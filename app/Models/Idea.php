@@ -12,6 +12,8 @@ class Idea extends Model
 {
     use HasFactory, SoftDeletes, Sluggable;
 
+    const PAGINATION_COUNT = 10;
+
     protected $guarded = [];
 
     public function user(): Relation
