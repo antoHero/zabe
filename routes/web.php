@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\IdeaController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,8 +14,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::view('/', 'index');
-Route::view('/idea', 'show');
+Route::controller(IdeaController::class)->group(function() {
+    Route::get('/', 'index')->name('idea.index');
+    Route::get('/ideas/{idea:slug}', 'show')->name('idea.show');
+});
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
