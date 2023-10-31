@@ -14,6 +14,7 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::view('/', 'index');
+Route::view('/idea', 'show');
 
 Route::view('profile', 'profile')
     ->middleware(['auth'])
