@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+[x-cloak] {
+    display: none !important;
+}
+
 .comments-container::before {
     position: absolute;
     display: block;
@@ -47,4 +51,13 @@
     left: -58px;
     background: theme('colors.purple');
     opacity: 1;
+}
+
+.is-admin {
+    border-width: 1px;
+    border-image-source: linear-gradient(266deg, #21c8f6 98%, #637bff -52%);
+    border-image-slice: 1;
+    background-image: linear-gradient(to bottom, #ffffff, #ffffff), linear-gradient(266deg, #21c8f6 98%, #637bff -52%);
+    background-origin: border-box;
+    background-clip: content-box, border-box;
 }
