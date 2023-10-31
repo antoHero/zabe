@@ -15,7 +15,7 @@
         @vite(['resources/css/app.css', 'resources/js/app.js'])
     </head>
     <body class="font-sans bg-gray-background text-gray-900 text-sm">
-        <header class="flex items-center justify-between px-8 py-4">
+        <header class="flex flex-col md:flex-row items-center justify-between px-8 py-4">
             <a href="/">
                 <img src="{{ asset('img/logo-dark.svg') }}" alt="logo">
             </a>
@@ -28,7 +28,7 @@
                 </a>
             </div>
         </header>
-        <main class="container mx-auto max-w-custom flex">
+        <main class="container mx-auto max-w-custom flex flex-col md:flex-row">
              <div class="w-[17.5rem] mx-auto md:mx-0 md:mr-[20px]">
                 <div
                     class="bg-white md:sticky md:top-8 border-2 border-blue rounded-xl mt-16"
