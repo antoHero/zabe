@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreIdeaRequest;
 use App\Http\Requests\UpdateIdeaRequest;
-use App\Models\Idea;
+use App\Models\{Category, Idea};
 
 class IdeaController extends Controller
 {
@@ -13,9 +13,11 @@ class IdeaController extends Controller
      */
     public function index()
     {
-        $ideas = Idea::simplePaginate(Idea::PAGINATION_COUNT);
+        $ideas = Idea::with('user', 'category')->simplePaginate(Idea::PAGINATION_COUNT);
+        $categories = Category::all();
         return view('idea.index', [
-            'ideas' => $ideas
+            'ideas' => $ideas,
+            'categories' => $categories
         ]);
     }
 
