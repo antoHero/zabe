@@ -75,7 +75,24 @@
                                 x-data="{ isOpen: false }"
                                 class="flex items-center space-x-2 mt-4 md:mt-0"
                             >
-                                <div class="{{ $idea->getStatusClasses() }} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">{{ $idea->status->name }}</div>
+                                {{-- <div class="{{ $idea->getStatusClasses() }} text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4">{{ $idea->status->name }}</div> --}}
+                                <div
+                                    @class([
+                                        'bg-gray-200' => $idea->status->name == 'Open',
+                                        'bg-red text-white' => $idea->status->name == 'Closed',
+                                        'bg-purple text-white' => $idea->status->name == 'Considering',
+                                        'bg-yellow text-white' => $idea->status->name == 'In Progress',
+                                        'bg-green text-white' => $idea->status->name == 'Implemented',
+                                        'text-xxs font-bold uppercase leading-none rounded-full text-center w-28 h-7 py-2 px-4' =>
+                                        $idea->status->name == 'Open'
+                                        || $idea->status->name == 'Closed'
+                                        ||$idea->status->name == 'Considering'
+                                        || $idea->status->name == 'In Progress'
+                                        || $idea->status->name == 'Implemented'
+                                    ])
+                                >
+                                    {{ $idea->status->name }}
+                                </div>
                                 <button
                                     @click="isOpen = !isOpen"
                                     class="relative bg-gray-100 hover:bg-gray-200 border rounded-full h-7 transition duration-150 ease-in px-3 py-2 flex items-center justify-center"
