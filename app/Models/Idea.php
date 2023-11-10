@@ -44,6 +44,11 @@ class Idea extends Model
         return $bgClasses[$this->status->name];
     }
 
+    public function votes(): Relation
+    {
+        return $this->belongsToMany(User::class, 'votes');
+    }
+
     public function sluggable(): array
     {
         return [
